@@ -1,0 +1,18 @@
+# Root .gitignore for Threads Hunter
+
+# Ignore project files from main scripts
+*.db
+*.csv
+.env
+.env.local
+
+# WebApp ignores
+webapp/node_modules/
+webapp/.next/
+webapp/out/
+webapp/build/
+webapp/.env*
+
+# OS files
+.DS_Store
+Thumbs.db
