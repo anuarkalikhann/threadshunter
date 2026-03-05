@@ -12,19 +12,16 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if window is defined to safely access Telegram SDK
+    // Access Telegram through the window object (loaded via Script in layout.tsx)
     if (typeof window !== "undefined") {
-      try {
-        // Use require or direct access to avoid "too dynamic" import error in Turbopack
-        const WebApp = require("@twa-dev/sdk").default;
-        WebApp.ready();
-        WebApp.expand();
+      const tg = (window as any).Telegram?.WebApp;
+      if (tg) {
+        tg.ready();
+        tg.expand();
 
-        if (WebApp.backgroundColor) {
-          document.body.style.backgroundColor = WebApp.backgroundColor;
+        if (tg.backgroundColor) {
+          document.body.style.backgroundColor = tg.backgroundColor;
         }
-      } catch (e) {
-        console.error("Telegram SDK not found or failed to load", e);
       }
     }
   }, []);
