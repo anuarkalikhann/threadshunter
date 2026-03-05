@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@twa-dev/sdk": "^8.0.2",
     "apify-client": "^2.22.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.0",
